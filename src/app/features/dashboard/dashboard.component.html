@@ -1,0 +1,64 @@
+<section class="section">
+  <h1 class="section__title">
+    Voting app!
+  </h1>
+
+  <div class="tables">
+    <ng-container *ngTemplateOutlet="votersTable"></ng-container>
+    <ng-container *ngTemplateOutlet="candidatesTable"></ng-container>
+  </div>
+</section>
+
+<section class="section">
+  <h1 class="section__title">
+    Vote
+  </h1>
+
+  <va-vote-form
+    (onSubmit)="handleVote($event)"
+    [votersList]="voters$ | async | votersToSelectOptions"
+    [candidatesList]="candidates$ | async | candidatesToSelectOptions"
+  ></va-vote-form>
+
+</section>
+
+<ng-template #votersTable>
+  <va-table-wrapper captureTitle="Voters" (onAddUser)="handleAddVoter($event)">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Has voted</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let voter of (voters$ | async); trackBy:trackByVoterId">
+        <tr>
+          <td>{{ voter.name }}</td>
+          <td>
+            <span *ngIf="voter.voted" class="material-icons check-icon">check</span>
+            <span *ngIf="!voter.voted" class="material-icons close-icon">close</span>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </va-table-wrapper>
+</ng-template>
+
+<ng-template #candidatesTable>
+  <va-table-wrapper captureTitle="Candidates" (onAddUser)="handleAddCandidate($event)">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Votes</th>
+    </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let candidate of (candidates$ | async); trackBy:trackByCandidateId">
+        <tr>
+          <td>{{ candidate.name }}</td>
+          <td>{{ candidate.votesCount }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </va-table-wrapper>
+</ng-template>

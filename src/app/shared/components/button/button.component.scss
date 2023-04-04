@@ -1,0 +1,46 @@
+@import 'variables';
+@import 'mixins';
+
+button {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 12px;
+  color: $zinc-800;
+  background-color: $zinc-200;
+  border-radius: $border-radius;
+  border-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+
+  &:hover {
+    background: rgba($zinc-200, 0.7);
+    @include box-shadow($box-shadow-xl)
+  }
+
+  &:focus {
+    outline: none;
+    @include box-shadow(0 0 0 4px $zinc-400);
+  }
+
+  & > span {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.button__small {
+  height: 36px;
+  font-size: $font-sm;
+}
+
+.button__default {
+  height: 48px;
+  font-size: $font-default;
+}
+
+

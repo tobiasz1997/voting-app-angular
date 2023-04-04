@@ -1,0 +1,35 @@
+@import 'placeholders';
+@import 'breakpoints';
+
+.select {
+  @extend %va__select;
+
+  &--error {
+    @extend %va__form--error;
+  }
+}
+
+form {
+  display: flex;
+
+  @include sm {
+    display: block;
+  }
+
+  & > * {
+    &:not(:first-child) {
+      margin-left: 16px;
+      margin-top: 0;
+
+      @include sm {
+        margin-top: 16px;
+        margin-left: 0;
+      }
+    }
+  }
+
+  & > .submit {
+    display: flex;
+    justify-content: end;
+  }
+}

@@ -1,0 +1,65 @@
+@import 'variables';
+@import 'breakpoints';
+
+.section {
+  &:not(:first-child) {
+    margin-top: 16px;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: $font-2xl;
+    margin: 0 0 16px 0;
+  }
+}
+
+.tables {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+
+  @include sm {
+    grid-template-columns: 1fr;
+  }
+}
+
+va-table-wrapper {
+  th, td {
+    text-align: center;
+    padding: 12px;
+    border: 1px solid $black;
+  }
+
+  td {
+    text-transform: capitalize;
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+  thead {
+    tr {
+      font-weight: bold;
+    }
+
+    th {
+      width: 100%;
+
+      &:not(:first-child) {
+        min-width: 112px;
+      }
+    }
+  }
+}
+
+.close-icon {
+  color: $red;
+  font-weight: bold;
+}
+
+.check-icon {
+  color: $green;
+  font-weight: bold;
+}
+

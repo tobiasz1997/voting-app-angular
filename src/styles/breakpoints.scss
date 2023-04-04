@@ -1,0 +1,12 @@
+$screen-sm: 640px;
+
+@mixin sm {
+  @media (max-width: #{$screen-sm}) {
+    @content
+  }
+}
+
+
+
+
+

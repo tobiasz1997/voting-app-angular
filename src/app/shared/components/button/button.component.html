@@ -1,0 +1,14 @@
+<button
+  (click)="handleClick()"
+  [type]="type"
+  [ngClass]="{
+    'button__small': size === 'small',
+    'button__default': size === 'default'
+  }"
+>
+  <span class="material-icons" *ngIf="icon; else labelTemplate">{{ icon }}</span>
+</button>
+
+<ng-template #labelTemplate>
+  {{ label }}
+</ng-template>

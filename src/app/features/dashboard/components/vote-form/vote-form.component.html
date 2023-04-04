@@ -1,0 +1,39 @@
+<form [formGroup]="formGroup" (ngSubmit)="handleSubmit()">
+  <div class="select">
+    <select formControlName='voterId'>
+      <option value='null' disabled hidden>
+        I am
+      </option>
+      <ng-container *ngFor="let voter of votersList">
+        <option [value]="voter.value">
+          {{voter.label}}
+        </option>
+      </ng-container>
+    </select>
+    <ng-container *ngIf="voterControl?.invalid && (voterControl?.touched || voterControl?.dirty)">
+      <div class="select--error" *ngIf="voterControl?.errors?.['required']">
+        Required field
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="select">
+    <select formControlName='candidateId'>
+      <option value='null' disabled hidden>
+        I vote for
+      </option>
+      <ng-container *ngFor="let candidate of candidatesList">
+        <option [value]="candidate.value">
+          {{candidate.label}}
+        </option>
+      </ng-container>
+    </select>
+    <ng-container *ngIf="candidateControl?.invalid && (candidateControl?.touched || candidateControl?.dirty)">
+      <div class="select--error" *ngIf="candidateControl?.errors?.['required']">
+        Required field
+      </div>
+    </ng-container>
+  </div>
+  <div class="submit"><va-button label="submit" type="submit"></va-button></div>
+</form>
+

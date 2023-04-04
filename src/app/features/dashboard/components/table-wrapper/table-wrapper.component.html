@@ -1,0 +1,12 @@
+<table class="table">
+  <caption class='table__caption'>
+    <div class="table__caption--container">
+      <h2>{{ captureTitle }}</h2>
+      <va-button size="small" icon="control_point" (action)="handleShowForm()"></va-button>
+    </div>
+    <div *ngIf="isFormVisible" class="table__caption--form">
+      <va-add-user-form (onSubmit)="handleSubmit($event)"></va-add-user-form>
+    </div>
+  </caption>
+  <ng-content></ng-content>
+</table>

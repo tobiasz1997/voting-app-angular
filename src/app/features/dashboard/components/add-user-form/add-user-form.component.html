@@ -1,0 +1,11 @@
+<form [formGroup]="formGroup" (ngSubmit)="handleSubmit()">
+  <div class="input">
+    <input formControlName='name' placeholder="Name" />
+    <ng-container *ngIf="nameControl?.invalid && (nameControl?.touched || nameControl?.dirty)">
+      <div class="input--error" *ngIf="nameControl?.errors?.['required']">
+        Required field
+      </div>
+    </ng-container>
+  </div>
+  <va-button label="submit" type="submit"></va-button>
+</form>

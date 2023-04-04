@@ -1,0 +1,19 @@
+@import 'placeholders';
+
+.input {
+  @extend %va__input;
+
+  &--error {
+    @extend %va__form--error;
+  }
+}
+
+form {
+  display: flex;
+
+  & > * {
+    &:not(:first-child) {
+      margin-left: 16px;
+    }
+  }
+}
